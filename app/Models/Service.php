@@ -10,7 +10,17 @@ class Service extends Model
     use HasFactory;
     protected $table='services';
 
-    // protected $fillable = [
-    //     'name',
-    // ];
+    protected $fillable = [
+        'name',
+        'icon'
+    ];
+    public function rooms()
+    {
+        return $this->belongsToMany(Room::class, 'room_services', 'service_id', 'room_id');
+                                //  bang n-n         bang trung gian   lk voi nhau
+    }
+    public function room_service()
+    {
+        return  $this->hasMany(RoomService::class,'service_id' ,'id');
+    }
 }

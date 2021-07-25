@@ -16,12 +16,12 @@ class CreateTableRoomServices extends Migration
     {
         Schema::create('room_services', function (Blueprint $table) {
             $table->id('id');
-            $table->integer('room_id');
-            $table->integer('service_id');
-            // $table->string('additional_price');
+            $table->unsignedBigInteger('room_id');
+            $table->unsignedBigInteger('service_id');
+            $table->string('additional_price');
             $table->timestamps();
-            // $table->foreign('room_id')->references('id')->on('rooms'); //sự ngu dốt của Cụt
-            // $table->foreign('service_id')->references('id')->on('services');//nhớ để bên dưới tml ngu vl
+            $table->foreign('room_id')->references('id')->on('rooms'); //sự ngu dốt của Cụt
+            $table->foreign('service_id')->references('id')->on('services');//nhớ để bên dưới tml ngu vl
         });
     }
 

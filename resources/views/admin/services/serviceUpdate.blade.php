@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 @section('content')
-<form action="{{ route('service.postUpdate', ['id' =>$detail->id]) }}" method="post" enctype="multipart/form-data">
+<form action="{{ route('service.postEdit', ['id' =>$detail->id]) }}" method="post" enctype="multipart/form-data">
     {{-- file bat buoc phai co  enctype="multipart/form-data" --}}
     @csrf
     {{-- form la phai co @csrf --}}

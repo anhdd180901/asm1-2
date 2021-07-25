@@ -12,14 +12,11 @@ class Room extends Model
 
     protected $fillable = [
         'room_no',
-        // 'room_n2323o',
-        // 'room_no2323',
-        // 'room_2no',
-        // 'room_n23232o',
-        // 'room_n32o3232',
-        // 'room_n3o',
-        // 'room_n2323o',
-        // 'room_2323no',
+        'floor',
+        'image',
+        'detail',
+        'price'
+
     ];
 
     // protected $guard = [];

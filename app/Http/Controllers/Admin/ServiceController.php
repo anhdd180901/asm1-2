@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\RoomService;
 use App\Models\Service;
 use Illuminate\Http\Request;
 
@@ -39,7 +40,7 @@ class ServiceController extends Controller
         }
     }
 
-    public function getUpdate(Request $request)
+    public function getEdit(Request $request)
     {
         //lấy id
         $id = $request->id;
@@ -50,7 +51,7 @@ class ServiceController extends Controller
         return view('admin.services.serviceUpdate', ['detail' => $detailService]); //sự ngu dốt của Cụt lần 2 ngu vcl
     }
 
-    public function postUpdate(Request $request)
+    public function postEdit(Request $request)
     {
         try {
             $id = $request->id;
@@ -74,5 +75,16 @@ class ServiceController extends Controller
         } catch (\Throwable $th) {
             //throw $th;
         }
+    }
+
+    public function getDelete(Request $request)
+    {
+        $id = $request->id;
+        $service = Service::find($id);
+        // dump($service);
+        $service->rooms()->detach($request->service_id);
+        $service->delete();
+
+        return redirect()->route('service.getList');
     }
 }

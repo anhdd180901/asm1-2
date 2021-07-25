@@ -16,7 +16,10 @@
             <td>{{$service->name}}</td>
             <td><img src="/upload/services/{{$service->icon}}" width="100px" alt=""></td>
             <td>
-                <a href="{{ route('service.getUpdate', ['id'=>$service->id]) }}" role="button" class="btn btn-primary">Update</a>
+                <a href="{{ route('service.getEdit', ['id'=>$service->id]) }}" role="button" class="btn btn-primary">Update</a>
+            </td>
+            <td>
+                <a href="{{ route('service.getDelete', ['id'=>$service->id]) }}" role="button" class="btn btn-danger">Delete</a>
             </td>
         </tr>
         @endforeach

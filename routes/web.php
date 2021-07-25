@@ -35,28 +35,18 @@ Route::prefix('admin')->group(function () {
         Route::post('/edit/{id}', "Admin\RoomController@postEdit")->name('room.postEdit');
 
         Route::get('/delete/{id}', "Admin\RoomController@getDelete")->name('room.getDelete');
-
     });
 
-
-    // Route::prefix('service')->group(function () {
-    //     Route::get('/list', "Admin\RoomController@getList")->name('room.getList');
-
-    //     Route::get('/add', "Admin\RoomController@getAdd")->name('room.getAdd');
-    //     Route::post('/add', "Admin\RoomController@postAdd")->name('room.postAdd');
-
-    //     Route::get('/edit/{id}', "Admin\RoomController@getEdit")->name('room.getEdit');
-    //     Route::post('/edit/{id}', "Admin\RoomController@postEdit")->name('room.postEdit');
-
-    // });
-
+    //list,add,update,delete service
+    Route::prefix('service')->group(function () {
+        Route::get('/list', "Admin\ServiceController@getList")->name('service.getList');
+        //add
+        Route::get('/add', "Admin\ServiceController@getAdd")->name('service.getAdd');
+        Route::post('/add', "Admin\ServiceController@postAdd")->name('service.postAdd');
+        //update
+        Route::get('/edit/{id}', "Admin\ServiceController@getEdit")->name('service.getEdit');
+        Route::post('/edit/{id}', "Admin\ServiceController@postEdit")->name('service.postEdit');
+        //delete
+        Route::get('/delete/{id}', "Admin\ServiceController@getDelete")->name('service.getDelete');
+    });
 });
-
-//list,add,update,delete service
-Route::get('/admin/service/list', "Admin\ServiceController@getList")->name('service.getList');
-//add
-Route::get('/admin/service/add', "Admin\ServiceController@getAdd")->name('service.getAdd');
-Route::post('/admin/service/add', "Admin\ServiceController@postAdd")->name('service.postAdd');
-//update
-Route::get('/admin/service/update', "Admin\ServiceController@getUpdate")->name('service.getUpdate');
-Route::post('/admin/service/update', "Admin\ServiceController@postUpdate")->name('service.postUpdate');
